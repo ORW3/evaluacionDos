@@ -1,0 +1,64 @@
+<div class="container">
+    <h3 class="mt-3 text-center">Alta de libros</h3>
+    
+    <div class="d-flex justify-content-center">
+        <div class="w-50">
+            <div class="col-sm mb-4">
+                <p>
+                    <label for="">Título:</label>
+                    <input type="text" name="" class="form-control" [(ngModel)]="libro.titulo" />
+                </p>
+                <p>
+                    <label for="">Autor:</label>
+                    <input type="text" name="" class="form-control" [(ngModel)]="libro.autor" />
+                </p>
+                <p>
+                    <label for="">Editorial:</label>
+                    <input type="text" name="" class="form-control" [(ngModel)]="libro.editorial" />
+                </p>
+                <p>
+                    <label for="">Fecha:</label>
+                    <input type="number" name="" class="form-control" [(ngModel)]="libro.fecha" />
+                </p>
+                <table class="w-100">
+                    <tr class="row">
+                        <td class="col d-flex justify-content-center">
+                            <button type="button" class="btn btn-primary" (click)="this.insertarLibro()">Insertar</button>
+                        </td>
+                        <td class="col d-flex justify-content-center">
+                            <button type="button" class="btn btn-warning" (click)="this.updateLibro()">Modificar</button>
+                        </td>
+                        <td class="col d-flex justify-content-center"> 
+                            <button type="button" class="btn btn-danger"
+                                (click)="this.deleteLibro(libro.id)">Eliminar</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <table class="table">
+        <thead>
+            <th>Titulo</th>
+            <th>Autor</th>
+            <th>Editorial</th>
+            <th>Fecha de publicacion</th>
+            <th>Seleccionar</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let libro of libros">
+                <td>{{ libro.titulo }}</td>
+                <td>{{ libro.autor }}</td>
+                <td>{{ libro.editorial }}</td>
+                <td>{{ libro.fecha }}</td>
+                <td>
+                    <button type="button" class="btn btn-primary" 
+                        (click)="selectLibro(libro)">
+                        Seleccionar
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

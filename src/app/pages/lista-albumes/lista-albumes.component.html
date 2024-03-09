@@ -1,0 +1,65 @@
+<h3 class="mt-3 text-center">Agregar Álbum de Música</h3>
+
+<div class="d-flex justify-content-center">
+    <div class="w-50">
+<div class="col-sm mb-4">
+    <p>
+        <label>Nombre del álbum:</label>
+        <input type="text" name="" class="form-control" [(ngModel)]="album.nombre">
+    </p>
+    <p>
+        <label>URL de imágen del álbum:</label>
+        <input type="text" name="" class="form-control" [(ngModel)]="album.urlImagen">
+    </p>
+    <br>
+        <label>Selecciona el género del álbum:</label>
+            <select [(ngModel)]="album.generoAlbum" class="form-control">
+                <option *ngFor="let genero of generos" value="{{ genero.id }}">
+                    {{ genero.descripcion }}
+                </option>
+            </select>
+    <br>
+    <table class="w-100">
+        <tr class="row">
+            <td class="col d-flex justify-content-center">
+                <button type="button" class="btn btn-primary" (click)="this.insertarAlbum()">Insertar</button>
+            </td>
+            <td class="col d-flex justify-content-center">
+                <button type="button" class="btn btn-warning" (click)="this.updateAlbum()">Modificar</button>
+            </td>
+            <td class="col d-flex justify-content-center">
+                <button type="button" class="btn btn-danger"
+                    (click)="this.deleteAlbum(album.id)">Eliminar</button>
+            </td>
+        </tr>
+    </table>
+</div>
+</div>
+</div>
+
+<h3 class="mt-3 text-center">Lista de Álbumes</h3>
+
+<div *ngIf="!albumes.length" class="nes-table-responsive mb-4">No hay álbumes disponibles <i class="nes-pokeball"></i></div>
+<div *ngIf="albumes.length" class="row row-cols-1 row-cols-md-5 g-4">
+    <div class="col" *ngFor="let album of albumes">
+        <div class="card">
+            <img src="{{ album.urlImagen }}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{ album.nombre }}</h5>
+                <p *ngIf="album.generoAlbum==1">Género: Música clásica</p>
+                <p *ngIf="album.generoAlbum==2">Género: Jazz</p>
+                <p *ngIf="album.generoAlbum==3">Género: Blues</p>
+                <p *ngIf="album.generoAlbum==4">Género: Salsa</p>
+                <p *ngIf="album.generoAlbum==5">Género: Flamenco</p>
+                <p *ngIf="album.generoAlbum==6">Género: Pop</p>
+                <p *ngIf="album.generoAlbum==7">Género: Rock</p>
+                <p *ngIf="album.generoAlbum==8">Género: Metal</p>
+                <p *ngIf="album.generoAlbum==9">Género: Hip Hop</p>
+                <button type="button" class="btn btn-primary" 
+                (click)="selectAlbum(album)">
+                Seleccionar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

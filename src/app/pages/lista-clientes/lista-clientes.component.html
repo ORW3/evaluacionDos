@@ -1,0 +1,73 @@
+<h3 class="mt-3 text-center">Listado de clientes</h3>
+
+<div *ngIf="!clientes.length">No hay clientes registrados</div>
+
+<div class="d-flex justify-content-center">
+    <div class="w-50">
+        <div class="col-sm mb-4" *ngIf="clientes.length">
+            <p>
+                <label for="">Nombre:</label>
+                <input type="text" name="" class="form-control" [(ngModel)]="cliente.nombre" />
+            </p>
+            <p>
+                <label for="">RFC:</label>
+                <input type="text" name="" class="form-control" [(ngModel)]="cliente.rfc" />
+            </p>
+            <p>
+                <label for="">Domicilio:</label>
+                <input type="text" name="" class="form-control" [(ngModel)]="cliente.domicilio" />
+            </p>
+            <p>
+                <label>Selecciona el tipo de cliente:</label>
+                <select [(ngModel)]="cliente.tipoCliente" class="form-control">
+                    <option *ngFor="let tipo of tipos" value="{{ tipo.id }}">
+                        {{ tipo.descripcion }}
+                    </option>
+                </select>
+            </p>
+            <table class="w-100">
+                <tr class="row">
+                    <td class="col d-flex justify-content-center">
+                        <button type="button" class="btn btn-primary" (click)="this.insertarCliente()">Insertar</button>
+                    </td>
+                    <td class="col d-flex justify-content-center">
+                        <button type="button" class="btn btn-warning" (click)="this.updateCliente()">Modificar</button>
+                    </td>
+                    <td class="col d-flex justify-content-center">
+                        <button type="button" class="btn btn-danger"
+                            (click)="this.deleteCliente(cliente.id)">Eliminar</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<table *ngIf="clientes.length" class="table">
+    <thead>
+        <th>Nombre</th>
+        <th>RFC</th>
+        <th>Domicilio</th>
+        <th>Tipo de cliente</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let cliente of clientes">
+            <td>{{ cliente.nombre }}</td>
+            <td>{{ cliente.rfc }}</td>
+            <td>{{ cliente.domicilio }}</td>
+            <td>{{ cliente.tipoCliente }}</td>
+            <td>
+                <button type="button" class="btn btn-primary" 
+                    (click)="selectCliente(cliente)">
+                    Seleccionar
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div class="mb-4 text-center" *ngIf="clientes.length">
+    <strong>Tipos de cliente:</strong><br />
+    1: Clientes activos<br />
+    2: Clientes inactivos<br />
+    3: Clientes deudores
+</div>

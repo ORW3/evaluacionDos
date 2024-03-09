@@ -1,0 +1,47 @@
+section {
+    width: 100%;
+    height: 0vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    box-shadow: 13px 13px 20px #b6b9bd,
+                -13px -13px 20px #ffffff;
+}
+
+section #pez, #rocas, #paisaje{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    image-rendering: pixelated;
+}
+
+section img#paisaje{
+    opacity: .5;
+}
+
+section img#pez{
+    z-index: 2;
+    filter: drop-shadow(1.5px 1.5px 4px #040018);
+}
+
+section img#rocas{
+    z-index: 1;
+    filter: drop-shadow(3px 3px 8px #040018);
+}
+
+@media(max-width:767px){
+    section #pez, #rocas, #paisaje{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 50%;
+        object-fit: cover;
+        pointer-events: none;
+        image-rendering: pixelated;
+    }
+}
